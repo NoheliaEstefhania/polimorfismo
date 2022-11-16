@@ -4,57 +4,34 @@
 using namespace std;
 
 class Mascota{
-  private:
-    string nombre;
-    string raza;
   public:
-    Mascota(string, string);
-    void mostrarMascota();
+    virtual void comer();
 };
 class Perro: public Mascota{
-  private:
-    int edadP;
-  public:
-    Perro(string, string, int);
-    void mostrarPerro();
+    void comer();
 };
 class Gato: public Mascota{
-  private:
-    int edadG;
   public:
     Gato(string, string, int);
-    void mostrarGato();
+    void comer();
 };
 
-//constructores
-Mascota::Mascota(string _nombre, string _raza){
-  nombre = _nombre;
-  raza = _raza;
+void Mascota::comer(){
+  cout<<"Mascota comiendo"<<endl;
 }
-Perro::Perro(string _nombre, string _raza, int _edadP):Mascota(_nombre, _raza){
-  edadP = _edadP;
+void Perro::comer(){
+  Mascota::comer();
+  cout<<"perro comiendo"<<endl;
 }
-Gato::Gato(string _nombre, string _raza, int _edadG):Mascota(_nombre, _raza){
-  edadG = _edadG;
-}
-//métodos
-
-void Mascota::mostrarMascota(){
-  cout<<"Mascota de nombre ("<<nombre<<") y raza ("<<raza<<")"<<endl;
-}
-void Perro::mostrarPerro(){
-  mostrarMascota();
-  cout<<"edad del perro ("<<edadP<<")"<<endl;
-}
-void Gato::mostrarGato(){
-  mostrarMascota();
-  cout<<"edad del gato ("<<edadG<<")"<<endl;
+void Gato::comer(){
+  Mascota::comer();
+  cout<<"gato comiendo"<<endl;
 }
 int main(){
-  Perro mascota1("Shaggui", "Pastor Aleman", 15);
-  Gato mascota2("Manchas", "fina", 25);
-  mascota1.mostrarPerro(); 
-  mascota2.mostrarGato();
+  Perro mascota1();
+  Gato mascota2();
+  mascota1.comer(); 
+  mascota2.comer();
   return 0;
 }
 
