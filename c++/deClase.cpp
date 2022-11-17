@@ -9,21 +9,21 @@ class Mascota{
     string raza;
   public:
     Mascota(string, string);
-    void mostrarMascota();
+    virtual void mostrarMascota();
 };
 class Perro: public Mascota{
   private:
     int edadP;
   public:
     Perro(string, string, int);
-    void mostrarPerro();
+    void mostrarMascota();
 };
 class Gato: public Mascota{
   private:
     int edadG;
   public:
     Gato(string, string, int);
-    void mostrarGato();
+    void mostrarMascota();
 };
 
 //constructores
@@ -42,19 +42,21 @@ Gato::Gato(string _nombre, string _raza, int _edadG):Mascota(_nombre, _raza){
 void Mascota::mostrarMascota(){
   cout<<"Mascota de nombre ("<<nombre<<") y raza ("<<raza<<")"<<endl;
 }
-void Perro::mostrarPerro(){
-  mostrarMascota();
+void Perro::mostrarMascota(){
+  Mascota::mostrarMascota();
   cout<<"edad del perro ("<<edadP<<")"<<endl;
 }
-void Gato::mostrarGato(){
-  mostrarMascota();
+void Gato::mostrarMascota(){
+  Mascota::mostrarMascota();
   cout<<"edad del gato ("<<edadG<<")"<<endl;
 }
 int main(){
-  Perro mascota1("Shaggui", "Pastor Aleman", 15);
-  Gato mascota2("Manchas", "fina", 25);
-  mascota1.mostrarPerro(); 
-  mascota2.mostrarGato();
+  Mascota *perro1 = new Perro("Shaggui", "Pastor Aleman", 25);
+  Mascota *gato1 = new Gato("Manchas", "x", 35);
+  perro1->mostrarMascota(); 
+  gato1->mostrarMascota();
+  //delete mascota1;
+  //delete mascota2;
   return 0;
 }
 

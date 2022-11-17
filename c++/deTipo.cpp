@@ -12,7 +12,6 @@ class Perro: public Mascota{
 };
 class Gato: public Mascota{
   public:
-    Gato(string, string, int);
     void comer();
 };
 
@@ -28,10 +27,12 @@ void Gato::comer(){
   cout<<"gato comiendo"<<endl;
 }
 int main(){
-  Perro mascota1();
-  Gato mascota2();
-  mascota1.comer(); 
-  mascota2.comer();
+  Mascota *mascota1 = new Perro();
+  Mascota *mascota2 = new Gato();
+  mascota1->comer(); 
+  mascota2->comer();
+  //delete mascota1;
+  //delete mascota2;
   return 0;
 }
 
